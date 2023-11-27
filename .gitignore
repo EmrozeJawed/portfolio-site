@@ -38,5 +38,3 @@ next-env.d.ts
 # PORTFOLIO SITE
 .env.local
 
-# src\app
-route.js

@@ -1,37 +1,37 @@
-import { NextResponse } from "next/server";
-import { Resend } from "resend";
+// import { NextResponse } from "next/server";
+// import { Resend } from "resend";
 
-// Ensure that RESEND_API_KEY is set in your environment
-const resendApiKey = process.env.RESEND_API_KEY;
+// // Ensure that RESEND_API_KEY is set in your environment
+// const resendApiKey = process.env.RESEND_API_KEY;
 
-if (!resendApiKey) {
-  throw new Error("Missing RESEND_API_KEY in the environment");
-}
+// if (!resendApiKey) {
+//   throw new Error("Missing RESEND_API_KEY in the environment");
+// }
 
-const resend = new Resend(resendApiKey);
-const fromEmail = process.env.FROM_EMAIL;
+// const resend = new Resend(resendApiKey);
+// const fromEmail = process.env.FROM_EMAIL;
 
-export async function POST(req, res) {
-  const { email, subject, message } = await req.json();
-  console.log(email, subject, message);
+// export async function POST(req, res) {
+//   const { email, subject, message } = await req.json();
+//   console.log(email, subject, message);
 
-  try {
-    const data = await resend.emails.send({
-      from: fromEmail,
-      to: [fromEmail, email],
-      subject: subject,
-      react: (
-        <>
-          <h1>{subject}</h1>
-          <p>Thank you for contacting us!</p>
-          <p>New message submitted:</p>
-          <p>{message}</p>
-        </>
-      ),
-    });
+//   try {
+//     const data = await resend.emails.send({
+//       from: fromEmail,
+//       to: [fromEmail, email],
+//       subject: subject,
+//       react: (
+//         <>
+//           <h1>{subject}</h1>
+//           <p>Thank you for contacting us!</p>
+//           <p>New message submitted:</p>
+//           <p>{message}</p>
+//         </>
+//       ),
+//     });
 
-    return NextResponse.json(data);
-  } catch (error) {
-    return NextResponse.json({ error });
-  }
-}
+//     return NextResponse.json(data);
+//   } catch (error) {
+//     return NextResponse.json({ error });
+//   }
+// }
