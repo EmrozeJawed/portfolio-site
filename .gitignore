@@ -37,3 +37,6 @@ next-env.d.ts
 
 # PORTFOLIO SITE
 .env.local
+
+# api/send
+.route.tsx
